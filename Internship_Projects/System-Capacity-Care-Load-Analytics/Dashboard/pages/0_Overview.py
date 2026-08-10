@@ -127,7 +127,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 left, right = st.columns([1.3, 1])
 
 with left:
-    with panel("Total System Load Over Time", icon="analytics", icon_color=ACCENT["blue"],
+    with panel("Total System Load Over Time", icon="analytics", min_height=560, icon_color=ACCENT["blue"],
                caption="Daily total (CBP custody + HHS care) with 7-day and 14-day rolling averages."):
         fig_trend = go.Figure()
         fig_trend.add_trace(go.Scatter(x=fdf["Date"], y=fdf["TotalSystemLoad"], mode="lines",
@@ -140,12 +140,12 @@ with left:
             template=plotly_template(), margin=dict(l=0, r=0, t=10, b=0),
             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
             xaxis_title=None, yaxis_title="Children Under Care", height=380,
-            legend=dict(orientation="h", y=1.12),
+            legend=dict(orientation="h", y=1.12)
         )
         st.plotly_chart(fig_trend, use_container_width=True)
 
 with right:
-    with panel("CBP vs. HHS Load Split", icon="compare", icon_color=ACCENT["purple"],
+    with panel("CBP vs. HHS Load Split", icon="compare", min_height=560, icon_color=ACCENT["purple"],
                caption="Share of the total system load sitting in each stage of the pipeline."):
         split = pd.DataFrame({
             "Stage": ["CBP Custody", "HHS Care"],
@@ -163,7 +163,7 @@ with right:
         top_strain_day = fdf.loc[fdf["TotalSystemLoad"].idxmax()]
         alert_box(
             f"Peak system load: {top_strain_day['TotalSystemLoad']:,.0f} children",
-            f"Recorded on {top_strain_day['Date'].strftime('%B %d, %Y')}.",
+            f"Recorded on {top_strain_day['Date'].strftime('%B %d, %Y')}."
         )
 
 st.markdown("<br>", unsafe_allow_html=True)

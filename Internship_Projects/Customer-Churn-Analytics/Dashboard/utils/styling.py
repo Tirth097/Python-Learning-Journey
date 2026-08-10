@@ -66,6 +66,21 @@ def theme_vars() -> dict:
 def plotly_template() -> str:
     return theme_vars()["plotly_template"]
 
+def style_fig(fig):
+    """Force every chart's text to the current theme's colors, regardless
+    of whatever template the figure was built with. Call this on every
+    figure right before st.plotly_chart() — it overrides axis ticks,
+    legend text, and annotations directly instead of relying on the
+    template to get it right."""
+    t = theme_vars()
+    fig.update_layout(
+        font_color=t["text_primary"],
+        legend_font_color=t["text_primary"],
+        xaxis=dict(tickfont=dict(color=t["text_secondary"]), title_font_color=t["text_secondary"]),
+        yaxis=dict(tickfont=dict(color=t["text_secondary"]), title_font_color=t["text_secondary"]),
+    )
+    fig.update_annotations(font_color=t["text_primary"])
+    return fig
 
 # ---------------------------------------------------------------------------
 # CSS
@@ -88,6 +103,7 @@ def inject_theme():
       
         .stApp {{
             background-color: {t['bg_app']};
+            color: {t['text_primary']};
         }}
         [data-testid="stHeader"] {{
             background-color: transparent;

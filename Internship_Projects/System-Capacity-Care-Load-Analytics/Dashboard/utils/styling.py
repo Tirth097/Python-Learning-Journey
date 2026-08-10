@@ -136,32 +136,42 @@ def inject_theme():
 
         /* ---- KPI card ---- */
         .kpi-card {{
-            background-color: {t['bg_card']};
-            border: 1px solid {t['border']};
-            border-radius: 14px;
-            padding: 14px 16px;
-            height: 100%;
-        }}
-        .kpi-top {{ display:flex; align-items:center; gap:10px; }}
-        .kpi-icon {{
-            width: 34px; height: 34px; border-radius: 50%;
-            display:flex; align-items:center; justify-content:center;
-            flex-shrink: 0;
-        }}
-        .kpi-label {{
-            color: {t['text_secondary']};
-            font-size: 12.5px;
-            font-weight: 600;
-        }}
-        .kpi-value {{
-            color: {t['text_primary']};
-            font-size: 24px;
-            font-weight: 700;
-            margin-top: 8px;
-        }}
-        .kpi-delta-up {{ color: {ACCENT['green']}; font-size: 11.5px; font-weight: 600; }}
-        .kpi-delta-down {{ color: {ACCENT['red']}; font-size: 11.5px; font-weight: 600; }}
-        .kpi-spark {{ margin-top: 6px; }}
+        background-color: {t['bg_card']};
+        border: 1px solid {t['border']};
+        border-radius: 16px;
+        padding: 20px 22px;
+        min-height: 190px;
+        display: flex;
+        flex-direction: column;
+    }}
+    .kpi-top {{ display:flex; align-items:center; gap:12px; }}
+    .kpi-icon {{
+        width: 42px; height: 42px; border-radius: 50%;
+        display:flex; align-items:center; justify-content:center;
+        flex-shrink: 0;
+    }}
+    .kpi-label {{
+        color: {t['text_secondary']};
+        font-size: 13.5px;
+        font-weight: 600;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+    }}
+    .kpi-value {{
+        color: {t['text_primary']};
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 10px;
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }}
+    }}
+    .kpi-spark {{ margin-top: auto; }}
+
 
         /* ---- Panel card: generic class for self-contained inline HTML blocks
                (a single st.markdown() call that opens AND closes the div in
