@@ -6,12 +6,13 @@ one place. If a definition changes (e.g. the strain threshold, or the
 rolling window length), this is the only file that needs editing.
 """
 
+
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import streamlit as st
-from pathlib import Path
 
-DATA_PATH = Path(__file__).resolve().parent / "data" / "UAC_Program_Raw.csv"
+DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "UAC_Program_Raw.csv"
 
 
 @st.cache_data
