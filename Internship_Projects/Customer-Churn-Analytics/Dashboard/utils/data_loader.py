@@ -8,8 +8,9 @@ this is the only file that needs editing.
 
 import pandas as pd
 import streamlit as st
+from pathlib import Path
 
-DATA_PATH = "data/Churn_Modelling.csv"
+DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "Churn_Modelling.csv"
 
 
 @st.cache_data
