@@ -9,8 +9,9 @@ rolling window length), this is the only file that needs editing.
 import numpy as np
 import pandas as pd
 import streamlit as st
+from pathlib import Path
 
-DATA_PATH = "data/UAC_Program_Raw.csv"
+DATA_PATH = Path(__file__).resolve().parent / "data" / "UAC_Program_Raw.csv"
 
 
 @st.cache_data
